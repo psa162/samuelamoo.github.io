@@ -1,24 +1,37 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Blinkit Retail — Power BI</title>
-<link rel="stylesheet" href="../assets/styles.css"/>
-</head><body>
-<div class="container">
-  <nav class="nav">
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Blinkit Retail — Power BI</title>
+  <link rel="stylesheet" href="../assets/styles.css"/>
+</head>
+<body>
+  <header class="topnav container">
     <div class="brand">Samuel Amoo</div>
-    <div><a href="../index.html">Home</a> <a href="./index.html">Analytics</a></div>
-  </nav>
-  <div class="breadcrumb">Home / Data Analytics / Blinkit</div>
-  <h1>Blinkit Retail Supermarket</h1>
-  <div class="frame">
-    <iframe title="Blinkit Retail" src="https://app.powerbi.com/view?r=eyJrIjoiYzE3NDUzMGUtOGFhMy00OGJhLWI0MGItNmYxMjNjZTQzYzJkIiwidCI6ImI4MjE5ODM1LWI0ZGQtNGQ3Yy1hYTE3LWE1NmY4OTg1ODdhMiJ9" allowfullscreen></iframe>
-  </div>
-  <p class="meta-links" style="margin-top:10px;">
-    <a class="btn" href="../docs/blinkit_architecture.png" target="_blank">Architecture</a>
-    <a class="btn" href="../docs/Blinkit_Data_Dictionary_and_QA.docx">Data Dictionary</a>
-    <a class="btn" href="../test/blinkit_sql_qa_tests.sql">SQL QA Tests</a>
-  </p>
-  <div class="footer">© 2025 Samuel Amoo</div>
-</div>
-</body></html>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="./index.html">Analytics</a>
+    </nav>
+  </header>
+
+  <section class="container section">
+    <h1>Blinkit Retail Supermarket</h1>
+    <p class="meta">Measures built on Silver; Gold view used for QA.</p>
+    <div class="frame">
+      <iframe title="Blinkit Retail"
+              src="https://app.powerbi.com/view?r=eyJrIjoiYzE3NDUzMGUtOGFhMy00OGJhLWI0MGItNmYxMjNjZTQzYzJkIiwidCI6ImI4MjE5ODM1LWI0ZGQtNGQ3Yy1hYTE3LWE1NmY4OTg1ODdhMiJ9"
+              allowfullscreen></iframe>
+    </div>
+
+    <div class="buttons" style="margin-top:12px">
+      <a class="btn" href="https://github.com/psa162/RetailSuperMarket/blob/main/docs/blinkit_architecture.png" target="_blank">Architecture</a>
+      <a class="btn" href="https://github.com/psa162/RetailSuperMarket/blob/main/docs/Blinkit_Data_Dictionary_and_QA.docx">Data Dictionary</a>
+      <a class="btn" href="https://github.com/psa162/RetailSuperMarket/blob/main/test/blinkit_sql_qa_tests.sql">SQL Tests</a>
+      <a class="btn" href="https://github.com/psa162/RetailSuperMarket" target="_blank">View Code</a>
+    </div>
+  </section>
+
+  <footer class="container footer">© 2025 Samuel Amoo</footer>
+</body>
+</html>
