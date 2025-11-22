@@ -1,61 +1,84 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Samuel Amoo — Portfolio</title>
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css"/>
 </head>
 <body>
-  <div class="container">
-    <nav class="nav">
-      <div class="brand">Samuel Amoo</div>
-      <div>
-        <a href="analytics/index.html">Data Analytics</a>
-        <a href="coding/index.html">Coding Projects</a>
-        <a href="mailto:samuelamoo@gmail.com">Contact</a>
-        <a href="https://www.linkedin.com/in/samuel-amoo/">LinkedIn</a>
-      </div>
+  <header class="topnav container">
+    <div class="brand">Samuel Amoo</div>
+    <nav>
+      <a href="analytics/index.html">Data Analytics</a>
+      <a href="coding/index.html">Coding Projects</a>
+      <a href="mailto:samuelamoo@gmail.com">Contact</a>
+      <a href="https://www.linkedin.com/in/samuel-amoo/">LinkedIn</a>
     </nav>
+  </header>
 
-    <section class="hero">
-      <div>
-        <h1>Data Analyst & Software Engineer</h1>
-        <p>I build practical analytics with clean data models, tested SQL, and interactive Power BI.</p>
-        <div class="cta">
-          <a class="btn primary" href="analytics/index.html">View Analytics Work</a>
-          <a class="btn" href="coding/index.html">View Coding Projects</a>
+  <section class="hero container">
+    <div>
+      <h1>Business And Data Analyst</h1>
+      <p>I build practical analytics with clean data models, tested SQL, and interactive Power BI.</p>
+      <div class="cta">
+        <a class="btn primary" href="analytics/index.html">View Analytics Work</a>
+        <a class="btn" href="coding/index.html">View Coding Projects</a>
+      </div>
+    </div>
+    <ul class="bullets">
+      <li><strong>Medallion</strong> architecture (Bronze → Silver → Gold)</li>
+      <li>Power BI measures on Silver, QA vs Gold</li>
+      <li>Data dictionary & SQL test suite</li>
+    </ul>
+  </section>
+
+  <section class="container section">
+    <h2>Featured Analytics</h2>
+    <div id="project-grid" class="grid"></div>
+  </section>
+
+  <footer class="container footer">
+    © 2025 Samuel Amoo · <a href="mailto:samuelamoo@gmail.com">samuelamoo@gmail.com</a> ·
+    <a href="https://www.linkedin.com/in/samuel-amoo/">LinkedIn</a>
+  </footer>
+
+  <script>
+    // ---- ADD/EDIT PROJECTS HERE (cards auto-render) ----
+    const projects = [
+      {
+        slug: "blinkit",
+        title: "Blinkit Retail Supermarket",
+        blurb: "Sales KPIs • Outlet performance • Ratings",
+        image: "https://raw.githubusercontent.com/psa162/RetailSuperMarket/main/docs/blinkit_powerbi_view.png",
+        reportLink: "analytics/blinkit.html",
+        codeLink: "https://github.com/psa162/RetailSuperMarket",
+        archLink: "https://github.com/psa162/RetailSuperMarket/blob/main/docs/blinkit_architecture.png",
+        dictLink: "https://github.com/psa162/RetailSuperMarket/blob/main/docs/Blinkit_Data_Dictionary_and_QA.docx",
+        testsLink: "https://github.com/psa162/RetailSuperMarket/blob/main/test/blinkit_sql_qa_tests.sql"
+      }
+      // Add more projects here as you build them
+    ];
+
+    const grid = document.getElementById('project-grid');
+    grid.innerHTML = projects.map(p => `
+      <article class="card">
+        <div class="thumb">
+          <img src="${p.image}" alt="${p.title}" onerror="this.parentNode.innerHTML='Screenshot placeholder'"/>
         </div>
-      </div>
-      <div class="list">
-        <strong>Highlights:</strong>
-        <ul>
-          <li>Medallion architecture (Bronze → Silver → Gold)</li>
-          <li>Power BI measures on Silver, QA vs Gold</li>
-          <li>Data dictionary & SQL test suite</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Featured Analytics</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="thumb"><img src="docs/blinkit_powerbi_view.png" alt="Blinkit Dashboard" onerror="this.parentNode.textContent='Screenshot placeholder';"></div>
-          <div class="body">
-            <h3 class="title">Blinkit Retail Supermarket</h3>
-            <p class="meta">Sales KPIs • Outlet performance • Ratings</p>
-            <a class="btn primary" href="analytics/blinkit.html">Open Interactive Report</a>
-            <a class="btn" href="docs/blinkit_architecture.png" target="_blank">Architecture</a>
-            <a class="btn" href="docs/Blinkit_Data_Dictionary_and_QA.docx">Data Dictionary</a>
+        <div class="body">
+          <h3 class="title">${p.title}</h3>
+          <p class="meta">${p.blurb}</p>
+          <div class="buttons">
+            <a class="btn primary" href="${p.reportLink}">Open Interactive Report</a>
+            <a class="btn" href="${p.archLink}" target="_blank">Architecture</a>
+            <a class="btn" href="${p.dictLink}">Data Dictionary</a>
+            <a class="btn" href="${p.testsLink}">SQL Tests</a>
+            <a class="btn" href="${p.codeLink}" target="_blank">View Code</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      © 2025 Samuel Amoo · <a href="mailto:samuelamoo@gmail.com">samuelamoo@gmail.com</a> · <a href="https://www.linkedin.com/in/samuel-amoo/">LinkedIn</a>
-    </div>
-  </div>
+      </article>
+    `).join('');
+  </script>
 </body>
 </html>
