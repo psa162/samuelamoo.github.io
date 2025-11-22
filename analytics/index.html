@@ -1,31 +1,59 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Analytics — Samuel Amoo</title>
-<link rel="stylesheet" href="../assets/styles.css"/>
-</head><body>
-<div class="container">
-  <nav class="nav">
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Analytics — Samuel Amoo</title>
+  <link rel="stylesheet" href="../assets/styles.css"/>
+</head>
+<body>
+  <header class="topnav container">
     <div class="brand">Samuel Amoo</div>
-    <div><a href="../index.html">Home</a> <a href="../coding/index.html">Coding</a></div>
-  </nav>
-  <div class="breadcrumb">Home / Data Analytics</div>
-  <h1>Data Analytics</h1>
-  <section class="section">
-    <div class="grid">
-      <div class="card">
-        <div class="thumb"><img src="../docs/blinkit_powerbi_view.png" alt="Blinkit Dashboard" onerror="this.parentNode.textContent='Screenshot placeholder';"></div>
-        <div class="body">
-          <h3 class="title">Blinkit Retail Supermarket</h3>
-          <p class="meta">End-to-end: SQL + Power BI • Silver measures • Gold QA</p>
-          <a class="btn primary" href="blinkit.html">Open Report</a>
-          <a class="btn" href="../docs/blinkit_architecture.png" target="_blank">Architecture</a>
-          <a class="btn" href="../docs/Blinkit_Data_Dictionary_and_QA.docx">Data Dictionary</a>
-          <a class="btn" href="../test/blinkit_sql_qa_tests.sql">SQL QA Tests</a>
-        </div>
-      </div>
-    </div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../coding/index.html">Coding</a>
+    </nav>
+  </header>
+
+  <section class="container section">
+    <h1>Data Analytics</h1>
+    <div id="project-grid" class="grid"></div>
   </section>
-  <div class="footer">© 2025 Samuel Amoo</div>
-</div>
-</body></html>
+
+  <footer class="container footer">© 2025 Samuel Amoo</footer>
+
+  <script>
+    const projects = [
+      {
+        slug: "blinkit",
+        title: "Blinkit Retail Supermarket",
+        blurb: "End-to-end: SQL + Power BI • Silver measures • Gold QA",
+        image: "https://raw.githubusercontent.com/psa162/RetailSuperMarket/main/docs/blinkit_powerbi_view.png",
+        reportLink: "blinkit.html",
+        codeLink: "https://github.com/psa162/RetailSuperMarket",
+        archLink: "https://github.com/psa162/RetailSuperMarket/blob/main/docs/blinkit_architecture.png",
+        dictLink: "https://github.com/psa162/RetailSuperMarket/blob/main/docs/Blinkit_Data_Dictionary_and_QA.docx",
+        testsLink: "https://github.com/psa162/RetailSuperMarket/blob/main/test/blinkit_sql_qa_tests.sql"
+      }
+    ];
+    document.getElementById('project-grid').innerHTML = projects.map(p => `
+      <article class="card">
+        <div class="thumb">
+          <img src="${p.image}" alt="${p.title}" onerror="this.parentNode.innerHTML='Screenshot placeholder'"/>
+        </div>
+        <div class="body">
+          <h3 class="title">${p.title}</h3>
+          <p class="meta">${p.blurb}</p>
+          <div class="buttons">
+            <a class="btn primary" href="${p.reportLink}">Open Interactive Report</a>
+            <a class="btn" href="${p.archLink}" target="_blank">Architecture</a>
+            <a class="btn" href="${p.dictLink}">Data Dictionary</a>
+            <a class="btn" href="${p.testsLink}">SQL Tests</a>
+            <a class="btn" href="${p.codeLink}" target="_blank">View Code</a>
+          </div>
+        </div>
+      </article>
+    `).join('');
+  </script>
+</body>
+</html>
