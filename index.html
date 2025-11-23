@@ -18,24 +18,41 @@
   </header>
 
   <section class="hero container">
-    <div>
-      <h1>Business And Data Analyst</h1>
-      <p>I build practical analytics with clean data models, tested SQL, and interactive Power BI.</p>
+    <div class="reveal">
+      <span class="badge">DATA ANALYST PORTFOLIO</span>
+      <h1>Results-Driven Business Analyst</h1>
+      <p class="lede">
+        I deliver data-driven insights and operational efficiency across regulated environments.
+        I use Power BI, SQL, and Agile practices to automate reporting, strengthen case-management,
+        and support regulatory compliance. I lead cross-functional work that aligns business goals
+        with practical technology solutions.
+      </p>
       <div class="cta">
         <a class="btn primary" href="analytics/index.html">View Analytics Work</a>
-        <a class="btn" href="coding/index.html">View Coding Projects</a>
+        <a class="btn ghost" href="coding/index.html">View Coding Projects</a>
+        <!-- Upload your resume PDF to /docs and point here -->
+        <a class="btn" href="docs/Samuel_Amoo_Resume.pdf">Download Resume</a>
+      </div>
+      <div class="logos">
+        <span class="logo"><span class="dot"></span> IIBA</span>
+        <span class="logo"><span class="dot"></span> CSM</span>
+        <span class="logo"><span class="dot"></span> CSI</span>
+        <span class="logo"><span class="dot"></span> Databricks</span>
+        <span class="logo"><span class="dot"></span> Azure</span>
       </div>
     </div>
-    <ul class="bullets">
-      <li><strong>Medallion</strong> architecture (Bronze → Silver → Gold)</li>
-      <li>Power BI measures on Silver, QA vs Gold</li>
-      <li>Data dictionary & SQL test suite</li>
+
+    <ul class="kv reveal">
+      <li class="pill">Medallion: Bronze → Silver → Gold</li>
+      <li class="pill">Power BI measures on Silver</li>
+      <li class="pill">QA vs Gold + SQL tests</li>
+      <li class="pill">Public interactive reports</li>
     </ul>
   </section>
 
   <section class="container section">
     <h2>Featured Analytics</h2>
-    <div id="project-grid" class="grid"></div>
+    <div id="project-grid" class="grid reveal"></div>
   </section>
 
   <footer class="container footer">
@@ -43,42 +60,33 @@
     <a href="https://www.linkedin.com/in/samuel-amoo/">LinkedIn</a>
   </footer>
 
+  <script src="assets/projects.js"></script>
   <script>
-    // ---- ADD/EDIT PROJECTS HERE (cards auto-render) ----
-    const projects = [
-      {
-        slug: "blinkit",
-        title: "Blinkit Retail Supermarket",
-        blurb: "Sales KPIs • Outlet performance • Ratings",
-        image: "https://raw.githubusercontent.com/psa162/RetailSuperMarket/main/docs/blinkit_powerbi_view.png",
-        reportLink: "analytics/blinkit.html",
-        codeLink: "https://github.com/psa162/RetailSuperMarket",
-        archLink: "https://github.com/psa162/RetailSuperMarket/blob/main/docs/blinkit_architecture.png",
-        dictLink: "https://github.com/psa162/RetailSuperMarket/blob/main/docs/Blinkit_Data_Dictionary_and_QA.docx",
-        testsLink: "https://github.com/psa162/RetailSuperMarket/blob/main/test/blinkit_sql_qa_tests.sql"
-      }
-      // Add more projects here as you build them
-    ];
-
+    // Render cards from central project list
     const grid = document.getElementById('project-grid');
-    grid.innerHTML = projects.map(p => `
+    grid.innerHTML = (window.PORTFOLIO_PROJECTS||[]).map(p => `
       <article class="card">
-        <div class="thumb">
-          <img src="${p.image}" alt="${p.title}" onerror="this.parentNode.innerHTML='Screenshot placeholder'"/>
-        </div>
+        <div class="thumb"><img src="${p.thumbnail}" alt="${p.title}"
+          onerror="this.parentNode.innerHTML='Snapshot placeholder'"/></div>
         <div class="body">
           <h3 class="title">${p.title}</h3>
-          <p class="meta">${p.blurb}</p>
+          <p class="meta">${p.summary}</p>
           <div class="buttons">
-            <a class="btn primary" href="${p.reportLink}">Open Interactive Report</a>
-            <a class="btn" href="${p.archLink}" target="_blank">Architecture</a>
-            <a class="btn" href="${p.dictLink}">Data Dictionary</a>
-            <a class="btn" href="${p.testsLink}">SQL Tests</a>
-            <a class="btn" href="${p.codeLink}" target="_blank">View Code</a>
+            <a class="btn primary" href="project.html?p=${p.slug}">Open Project</a>
+            <a class="btn" href="${p.links.architecture}" target="_blank">Architecture</a>
+            <a class="btn" href="${p.links.dictionary}">Data Dictionary</a>
+            <a class="btn" href="${p.links.tests}">SQL Tests</a>
+            <a class="btn" href="${p.links.code}" target="_blank">View Code</a>
           </div>
         </div>
       </article>
     `).join('');
+
+    // Scroll reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => e.target.classList.toggle('show', e.isIntersecting));
+    }, {threshold: .1});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 </body>
 </html>
