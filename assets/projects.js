@@ -1,13 +1,13 @@
-<script>
+// assets/projects.js
 window.PORTFOLIO_PROJECTS = [
   {
     slug: "blinkit",
     title: "Blinkit Retail Supermarket",
-    summary: "End-to-end sales analytics with Medallion layers; Silver measures, Gold QA; interactive Power BI (no sign-in).",
-    // thumbnail shown on cards
-    thumbnail: "https://raw.githubusercontent.com/psa162/RetailSuperMarket/main/docs/blinkit_powerbi_view.png",
+    summary:
+      "End-to-end sales analytics with Medallion layers; Silver measures, Gold QA; interactive Power BI (no sign-in).",
+    thumbnail:
+      "https://raw.githubusercontent.com/psa162/RetailSuperMarket/main/docs/blinkit_powerbi_view.png",
 
-    // Sections shown on the project page
     problem: [
       "Leadership needs Total Sales, Avg Sales, #Items, Avg Rating by outlet type, size, and location.",
       "Raw data has inconsistent labels, zero visibility values, and missing weights—must be standardized.",
@@ -19,8 +19,8 @@ window.PORTFOLIO_PROJECTS = [
     ],
     work: [
       "Silver: trim text, normalize fat content (LF/reg), set zero visibility → NULL, impute item weight by item type avg.",
-      "Gold: created aggregated **view** for KPIs; measures live on Silver to avoid average-of-averages.",
-      "SQL QA tests to reconcile Silver↔Gold segment KPIs and totals; matching DAX QA measures in Power BI.",
+      "Gold: created aggregated view for KPIs; measures live on Silver to avoid average-of-averages.",
+      "SQL QA tests to reconcile Silver↔Gold segment KPIs and totals; matching DAX QA measures.",
       "Published report to web for frictionless access."
     ],
     insights: [
@@ -40,26 +40,22 @@ window.PORTFOLIO_PROJECTS = [
     ],
     tools: ["SQL Server", "T-SQL", "Power BI", "DAX", "GitHub Pages"],
 
-    // Live Power BI
     powerBI: {
       title: "Interactive Report",
-      iframe: "https://app.powerbi.com/view?r=eyJrIjoiYzE3NDUzMGUtOGFhMy00OGJhLWI0MGItNmYxMjNjZTQzYzJkIiwidCI6ImI4MjE5ODM1LWI0ZGQtNGQ3Yy1hYTE3LWE1NmY4OTg1ODdhMiJ9"
+      iframe:
+        "https://app.powerbi.com/view?r=eyJrIjoiYzE3NDUzMGUtOGFhMy00OGJhLWI0MGItNmYxMjNjZTQzYzJkIiwidCI6ImI4MjE5ODM1LWI0ZGQtNGQ3Yy1hYTE3LWE1NmY4OTg1ODdhMiJ9"
     },
 
-    // Optional extra images
-    images: [
-      // { src: "https://.../visual.png", caption: "Breakdown by Item Type" }
-    ],
+    images: [],
 
-    // Useful links
     links: {
       code: "https://github.com/psa162/RetailSuperMarket",
-      architecture: "https://github.com/psa162/RetailSuperMarket/blob/main/docs/blinkit_architecture.png",
-      dictionary: "https://github.com/psa162/RetailSuperMarket/blob/main/docs/Blinkit_Data_Dictionary_and_QA.docx",
-      tests: "https://github.com/psa162/RetailSuperMarket/blob/main/test/blinkit_sql_qa_tests.sql"
+      architecture:
+        "https://github.com/psa162/RetailSuperMarket/blob/main/docs/blinkit_architecture.png",
+      dictionary:
+        "https://github.com/psa162/RetailSuperMarket/blob/main/docs/Blinkit_Data_Dictionary_and_QA.docx",
+      tests:
+        "https://github.com/psa162/RetailSuperMarket/blob/main/test/blinkit_sql_qa_tests.sql"
     }
   }
-
-  // Add more projects by copying this object and changing fields.
 ];
-</script>
