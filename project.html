@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Project — Samuel Amoo</title>
+  <link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body>
+  <header class="topnav container">
+    <div class="brand">Samuel Amoo</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="analytics/index.html">Data Analytics</a>
+      <a href="coding/index.html">Coding</a>
+    </nav>
+  </header>
+
+  <main class="container section" id="content"></main>
+
+  <footer class="container footer">© 2025 Samuel Amoo</footer>
+
+  <script src="assets/projects.js"></script>
+  <script>
+    const q = new URLSearchParams(location.search).get('p');
+    const proj = (window.PORTFOLIO_PROJECTS||[]).find(x=>x.slug===q);
+    const el = document.getElementById('content');
+    if(!proj){ el.innerHTML = "<h1>Project not found</h1>"; throw ""; }
+
+    const bullets = arr => `<ul class="bullets">${arr.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+
+    el.innerHTML = `
+      <section class="reveal">
+        <span class="badge">CASE STUDY</span>
+        <h1>${proj.title}</h1>
+        <p class="lede">${proj.summary}</p>
+        <div class="kvlist" style="margin-top:10px">
+          ${(proj.tools||[]).map(t=>`<span class="pill">${t}</span>`).join('')}
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <h2>Business Requirement / Problem Statement</h2>
+        ${bullets(proj.problem || [])}
+      </section>
+
+      <section class="section reveal">
+        <h2>Data Source</h2>
+        ${bullets(proj.dataSource || [])}
+      </section>
+
+      <section class="section reveal">
+        <h2>Visuals</h2>
+        ${proj.powerBI ? `
+          <h3>${proj.powerBI.title}</h3>
+          <div class="frame">
+            <iframe title="${proj.title}" src="${proj.powerBI.iframe}" allowfullscreen></iframe>
+          </div>` : ''}
+        ${proj.images && proj.images.length ? `
+          <div class="grid" style="margin-top:12px">
+            ${proj.images.map(i=>`
+              <figure class="card">
+                <div class="thumb"><img src="${i.src}" alt="${i.caption||''}"></div>
+                ${i.caption?`<div class="body"><div class="meta">${i.caption}</div></div>`:''}
+              </figure>`).join('')}
+          </div>` : ''}
+      </section>
+
+      <section class="section reveal">
+        <h2>What Was Done</h2>
+        ${bullets(proj.work || [])}
+      </section>
+
+      <section class="section reveal">
+        <h2>Insights & Recommendations</h2>
+        <div class="two-col">
+          <div>
+            <h3>Insights</h3>
+            ${bullets(proj.insights || [])}
+          </div>
+          <div>
+            <h3>Recommendations</h3>
+            ${bullets(proj.recommendations || [])}
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <h2>Results / Value to the Organization</h2>
+        ${bullets(proj.results || [])}
+      </section>
+
+      <section class="section reveal">
+        <h2>Resources</h2>
+        <div class="buttons">
+          <a class="btn" href="${proj.links.architecture}" target="_blank">Architecture</a>
+          <a class="btn" href="${proj.links.dictionary}">Data Dictionary</a>
+          <a class="btn" href="${proj.links.tests}">SQL Tests</a>
+          <a class="btn" href="${proj.links.code}" target="_blank">View Code</a>
+        </div>
+      </section>
+    `;
+
+    // reveal animations
+    const io = new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('show',e.isIntersecting)), {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+  </script>
+</body>
+</html>
