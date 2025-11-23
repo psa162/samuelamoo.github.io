@@ -10,9 +10,10 @@
   <header class="topnav container">
     <div class="brand">Samuel Amoo</div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="analytics/index.html">Data Analytics</a>
-      <a href="coding/index.html">Coding</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="mailto:samuelamoo@gmail.com">Contact</a>
+      <a href="https://www.linkedin.com/in/samuel-amoo/">LinkedIn</a>
+      <a href="docs/Samuel_Amoo_Resume.pdf">Resume</a>
     </nav>
   </header>
 
@@ -27,7 +28,7 @@
     const el = document.getElementById('content');
     if(!proj){ el.innerHTML = "<h1>Project not found</h1>"; throw ""; }
 
-    const bullets = arr => `<ul class="bullets">${arr.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+    const bullets = arr => `<ul class="bullets">${(arr||[]).map(i=>`<li>${i}</li>`).join('')}</ul>`;
 
     el.innerHTML = `
       <section class="reveal">
@@ -41,12 +42,12 @@
 
       <section class="section reveal">
         <h2>Business Requirement / Problem Statement</h2>
-        ${bullets(proj.problem || [])}
+        ${bullets(proj.problem)}
       </section>
 
       <section class="section reveal">
         <h2>Data Source</h2>
-        ${bullets(proj.dataSource || [])}
+        ${bullets(proj.dataSource)}
       </section>
 
       <section class="section reveal">
@@ -68,7 +69,7 @@
 
       <section class="section reveal">
         <h2>What Was Done</h2>
-        ${bullets(proj.work || [])}
+        ${bullets(proj.work)}
       </section>
 
       <section class="section reveal">
@@ -76,18 +77,18 @@
         <div class="two-col">
           <div>
             <h3>Insights</h3>
-            ${bullets(proj.insights || [])}
+            ${bullets(proj.insights)}
           </div>
           <div>
             <h3>Recommendations</h3>
-            ${bullets(proj.recommendations || [])}
+            ${bullets(proj.recommendations)}
           </div>
         </div>
       </section>
 
       <section class="section reveal">
         <h2>Results / Value to the Organization</h2>
-        ${bullets(proj.results || [])}
+        ${bullets(proj.results)}
       </section>
 
       <section class="section reveal">
@@ -101,7 +102,7 @@
       </section>
     `;
 
-    // reveal animations
+    // scroll reveal
     const io = new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('show',e.isIntersecting)), {threshold:.1});
     document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
   </script>
