@@ -58,4 +58,5 @@ window.PORTFOLIO_PROJECTS = [
         "https://github.com/psa162/RetailSuperMarket/blob/main/test/blinkit_sql_qa_tests.sql"
     }
   }
+  // Add more project objects here later.
 ];
