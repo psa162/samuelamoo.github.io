@@ -58,11 +58,13 @@
     <a href="https://www.linkedin.com/in/samuel-amoo/">LinkedIn</a>
   </footer>
 
+  <!-- Load projects BEFORE rendering -->
   <script src="assets/projects.js"></script>
   <script>
     // Render cards from central list
     const grid = document.getElementById('project-grid');
-    grid.innerHTML = (window.PORTFOLIO_PROJECTS||[]).map(p => `
+    const data = (window.PORTFOLIO_PROJECTS || []);
+    grid.innerHTML = data.map(p => `
       <article class="card">
         <div class="thumb"><img src="${p.thumbnail}" alt="${p.title}"
           onerror="this.parentNode.innerHTML='Snapshot placeholder'"/></div>
