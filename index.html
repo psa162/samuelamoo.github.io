@@ -10,10 +10,10 @@
   <header class="topnav container">
     <div class="brand">Samuel Amoo</div>
     <nav>
-      <a href="analytics/index.html">Data Analytics</a>
-      <a href="coding/index.html">Coding Projects</a>
+      <a href="#projects">Projects</a>
       <a href="mailto:samuelamoo@gmail.com">Contact</a>
       <a href="https://www.linkedin.com/in/samuel-amoo/">LinkedIn</a>
+      <a href="docs/Samuel_Amoo_Resume.pdf">Resume</a>
     </nav>
   </header>
 
@@ -22,15 +22,13 @@
       <span class="badge">DATA ANALYST PORTFOLIO</span>
       <h1>Results-Driven Business Analyst</h1>
       <p class="lede">
-        I deliver data-driven insights and operational efficiency across regulated environments.
-        I use Power BI, SQL, and Agile practices to automate reporting, strengthen case-management,
+        I deliver measurable business outcomes by combining modern data modeling with pragmatic BI.
+        I use Power BI, SQL, and Agile practices to automate reporting, streamline case-management,
         and support regulatory compliance. I lead cross-functional work that aligns business goals
-        with practical technology solutions.
+        with practical technology solutions in regulated environments.
       </p>
       <div class="cta">
-        <a class="btn primary" href="analytics/index.html">View Analytics Work</a>
-        <a class="btn ghost" href="coding/index.html">View Coding Projects</a>
-        <!-- Upload your resume PDF to /docs and point here -->
+        <a class="btn primary" href="#projects">View Projects</a>
         <a class="btn" href="docs/Samuel_Amoo_Resume.pdf">Download Resume</a>
       </div>
       <div class="logos">
@@ -50,8 +48,8 @@
     </ul>
   </section>
 
-  <section class="container section">
-    <h2>Featured Analytics</h2>
+  <section id="projects" class="container section">
+    <h2>Projects</h2>
     <div id="project-grid" class="grid reveal"></div>
   </section>
 
@@ -62,7 +60,7 @@
 
   <script src="assets/projects.js"></script>
   <script>
-    // Render cards from central project list
+    // Render cards from central list
     const grid = document.getElementById('project-grid');
     grid.innerHTML = (window.PORTFOLIO_PROJECTS||[]).map(p => `
       <article class="card">
@@ -73,9 +71,6 @@
           <p class="meta">${p.summary}</p>
           <div class="buttons">
             <a class="btn primary" href="project.html?p=${p.slug}">Open Project</a>
-            <a class="btn" href="${p.links.architecture}" target="_blank">Architecture</a>
-            <a class="btn" href="${p.links.dictionary}">Data Dictionary</a>
-            <a class="btn" href="${p.links.tests}">SQL Tests</a>
             <a class="btn" href="${p.links.code}" target="_blank">View Code</a>
           </div>
         </div>
@@ -83,9 +78,7 @@
     `).join('');
 
     // Scroll reveal
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => e.target.classList.toggle('show', e.isIntersecting));
-    }, {threshold: .1});
+    const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('show', e.isIntersecting)), {threshold:.1});
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 </body>
