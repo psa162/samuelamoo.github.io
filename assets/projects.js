@@ -1,4 +1,6 @@
 // assets/projects.js
+// Portfolio projects config
+
 window.PORTFOLIO_PROJECTS = [
   {
     slug: "blinkit",
@@ -57,34 +59,25 @@ window.PORTFOLIO_PROJECTS = [
       tests:
         "https://github.com/psa162/RetailSuperMarket/blob/main/test/blinkit_sql_qa_tests.sql"
     }
-  }
-// assets/projects.js
-// Portfolio projects config (right now: SQL Data Warehouse only)
-window.PORTFOLIO_PROJECTS = [
+  },
   {
     slug: "baraa",
     title: "BARAA — SQL Data Warehouse & Power BI",
     summary:
       "Enterprise-style SQL warehouse (Bronze → Silver → Gold) with T-SQL ETL, Gold views, QA tests, and a Power BI report for core sales & product KPIs.",
-    // Use your dashboard as the card image
     thumbnail:
       "https://raw.githubusercontent.com/psa162/sql-data-warehouse-project/main/docs/PowerBI_Dashboard.png",
 
-    // Business Requirement & Problem Statement (sales/products only)
     problem: [
       "Leadership needs a consolidated, reliable view of sales and product performance from ERP CSVs, CRM extracts, and spreadsheets.",
       "Key questions: Total Sales, Order Count, Quantity, AOV, YoY/MoM trends, product ranking/underperformers, price vs volume patterns.",
       "Issues: inconsistent product names/codes, duplicate or mismatched customer IDs, missing dates/quantities, non-standard formats, manual Excel, no single source of truth."
     ],
-
-    // Data sources
     dataSource: [
       "ERP CSV files (Products, Orders, Order Items/Lines).",
       "CRM extracts (Customers, Segments/Regions when available).",
       "SQL Server used for storage and pipeline."
     ],
-
-    // What was done (by layer)
     work: [
       "Modeled Medallion pipelines (Bronze → Silver → Gold) with T-SQL ETL (TRY/CATCH logging + timings).",
       "Bronze: landed raw files as-is; preserved structure/encoding.",
@@ -94,41 +87,32 @@ window.PORTFOLIO_PROJECTS = [
       "QA: T-SQL tests (totals, dimension counts, FK integrity, duplicates, nulls/outliers, Silver↔Gold reconciliation) + DAX cross-checks in Power BI.",
       "Documentation: data dictionary, medallion/flow diagrams."
     ],
-
-    // Insights (generic, aligned to sales/products)
     insights: [
       "Top products contribute a large share of revenue; long-tail SKUs drive orders with lower revenue per item.",
       "AOV shows seasonality; promo months align with higher AOV and volume.",
       "Price vs volume highlights items with strong elasticity signals.",
       "Order-to-ship lead time is stable; exceptions cluster in specific periods."
     ],
-
-    // Recommendations
     recommendations: [
       "Protect availability/promo cadence for high-margin top sellers.",
       "Rationalize consistently low-performing SKUs or bundle/price-pack.",
       "Pilot targeted price tests where elasticity is indicated; monitor AOV/conv.",
       "Investigate exception windows in fulfillment to smooth spikes."
     ],
-
-    // Value delivered
     results: [
       "Single source of truth for sales & product KPIs; much less reconciliation.",
       "Repeatable, auditable ETL with QA gates; fewer dashboard breaks.",
       "Public Power BI link speeds stakeholder reviews (no sign-in).",
       "Clear docs/models improve maintainability and onboarding."
     ],
-
     tools: ["SQL Server", "T-SQL", "SSMS", "Power BI", "DAX", "GitHub Pages"],
 
-    // Live Power BI (publish-to-web)
     powerBI: {
       title: "Interactive Report",
       iframe:
         "https://app.powerbi.com/view?r=eyJrIjoiZWI5NGYxNzYtYTMwNi00YzZkLThlODMtN2I4MGFjNjk0ZjY1IiwidCI6ImI4MjE5ODM1LWI0ZGQtNGQ3Yy1hYTE3LWE1NmY4OTg1ODdhMiJ9"
     },
 
-    // Extra visuals (gallery)
     images: [
       {
         src: "https://raw.githubusercontent.com/psa162/sql-data-warehouse-project/main/docs/PowerBI_Dashboard.png",
@@ -140,7 +124,6 @@ window.PORTFOLIO_PROJECTS = [
       }
     ],
 
-    // Links (point to your repo docs)
     links: {
       code: "https://github.com/psa162/sql-data-warehouse-project",
       architecture:
@@ -151,6 +134,4 @@ window.PORTFOLIO_PROJECTS = [
         "https://github.com/psa162/sql-data-warehouse-project/tree/main/tests"
     }
   }
-];
-
 ];
