@@ -62,7 +62,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     slug: "baraa",
-    title: "BARAA — SQL Data Warehouse & Power BI",
+    title: "SQL Data Warehouse & Power BI",
     summary:
       "Enterprise-style SQL warehouse (Bronze → Silver → Gold) with T-SQL ETL, Gold views, QA tests, and a Power BI report for core sales & product KPIs.",
     thumbnail:
